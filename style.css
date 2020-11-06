@@ -1,0 +1,36 @@
+.app-container {
+    margin: auto;
+    width: 500px;
+    height: 400px;;
+    background-color: pink;
+    position: relative;
+}
+
+/* .heading {
+    text-align: center;
+} */
+
+.heading {
+    position: relative;
+    display: block;
+    margin: auto;
+    padding-top: 30px;
+    /* border: 3px solid #73AD21; */
+    text-align: center;
+}
+
+.city-container {
+    position: relative;
+    left: 10%;
+    width: 30%;
+    top: 30px;;
+    background-color: rgb(27, 75, 133);
+}
+
+.city {
+    color: white;
+    padding-top: 20px;;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
