@@ -2,8 +2,9 @@
     margin: auto;
     width: 500px;
     height: 400px;;
-    background-color: pink;
+    background-color: whitesmoke;
     position: relative;
+    border-radius: 15px;
 }
 
 /* .heading {
@@ -20,17 +21,32 @@
 }
 
 .city-container {
-    position: relative;
+    position: absolute;
     left: 10%;
     width: 30%;
-    top: 30px;;
+    top: 100px;
+    border-radius: 5px;
     background-color: rgb(27, 75, 133);
 }
 
 .city {
     color: white;
-    padding-top: 20px;;
-    padding-bottom: 20px;
-    padding-left: 20px;
+    padding-top: 25px;;
+    padding-bottom: 25px;
+    padding-left: 25px;
+    cursor: pointer;
 }
 
+.city:hover {
+    background-color: rgb(60, 144, 218);
+    border-radius: 5px;
+}
+
+#aqi {
+    position: absolute;
+    left: 50%;
+    width: 150px;
+    height: 100px;
+    top: 100px;
+    border: 3px solid #0b2a59;
+}
