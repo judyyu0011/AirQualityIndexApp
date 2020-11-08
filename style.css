@@ -1,3 +1,7 @@
+* {
+    font-family: 'IBM Plex Serif', serif;
+}
+
 .app-container {
     margin: auto;
     width: 500px;
@@ -50,18 +54,48 @@
     top: 100px;
 }
 
-.data-source {
+.aqi-value {
     position: relative;
+    left: 0;
+    margin-top: 15px;
+    width: 30%;
+    font-size: 60px;
+    font-weight: 600;
+}
+
+.pm25 {
+    position: absolute;
+    left: 100px;
+    top: 33px;
+    text-align: center;
+    width: max-content;
+    background-color: lightblue;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.o3 {
+    position: absolute;
+    left: 100px;
+    top: 0;
+    text-align: center;
+    width: max-content;
+    background-color: rgb(207, 191, 238);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.station {
+    position: relative;
+    top: -15px;
+    /* background-color: red; */
+}
+
+.data-source {
+    position: absolute;
     right: 0%;
-    top: 30px;
+    top: 170px;
     color: grey;
     font-size: 10px;
     text-align: right;
-}
-
-.aqi-value {
-    margin: auto;
-    margin-top: 30px;
-    width: 30%;
-    font-size: 50px;
 }
