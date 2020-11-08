@@ -1,6 +1,6 @@
-var richmond = document.getElementById('Richmond');
-var la = document.getElementById('LA');
-var shanghai = document.getElementById('Shanghai')
+// var richmond = document.getElementById('Richmond');
+// var la = document.getElementById('LA');
+// var shanghai = document.getElementById('Shanghai')
 
 
 
