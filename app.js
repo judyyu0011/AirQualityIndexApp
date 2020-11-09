@@ -1,41 +1,35 @@
-// document.addEventListener('DOMContentLoaded', () => {
-    // const appContainer = document.querySelector('.app-container');
-
-    // const aqiContainer = document.createElement('div');
-    // appContainer.appendChild(aqiContainer);
-    // aqiContainer.classList.add('aqi');
-
+  
     function vancouverFn() {
         $.getJSON('https://api.waqi.info/feed/vancouver/?token=53f407f0dab7cf67ad57f71d6c32ad3588cbe32f', function(aqiData) {
             displayAQI(aqiData);
+            activateColor("vancouver","shanghai","la");
         });
-        // alert("test");
     }
 
     function laFn() {
         $.getJSON('https://api.waqi.info/feed/los-angeles/?token=53f407f0dab7cf67ad57f71d6c32ad3588cbe32f', function(aqiData) {
             displayAQI(aqiData);
+            activateColor("la","shanghai","vancouver");
         });
-        // alert("test");
     }
 
     function shanghaiFn() {
         $.getJSON('https://api.waqi.info/feed/shanghai/?token=53f407f0dab7cf67ad57f71d6c32ad3588cbe32f', function(aqiData) {
-            displayAQI(aqiData);    
+            displayAQI(aqiData);
+            activateColor("shanghai","la","vancouver");
         });
-        // alert("test");
+    }
+
+    function activateColor(active, notActive1, notActive2) {
+        document.getElementById(active).classList.add("city-active");
+        document.getElementById(notActive1).classList.remove("city-active");
+        document.getElementById(notActive2).classList.remove("city-active");
+
     }
 
     function displayAQI(aqiData) {
         const aqiContainer = document.getElementById("aqi");
         aqiContainer.innerHTML = " ";
-        // innerHTML = aqiData.data.city.name;
-        // const aqiContainer = document.querySelector('#aqi');
-
-
-        // const aqiContainer = document.createElement('div');
-        // appContainer.append(aqiContainer);
-        // aqiContainer.classList.add('aqi');
 
         const aqiValue = document.createElement('h1');
         aqiContainer.appendChild(aqiValue);
@@ -45,7 +39,6 @@
         const pm25 = document.createElement('p');
         aqiContainer.appendChild(pm25);
         pm25.classList.add('pm25');
-        // var domPol = aqiData.data.dominentpol;
         pm25.innerHTML = "PM2.5" + ": " + aqiData.data.iaqi["pm25"].v;
 
         const o3 = document.createElement('p');
@@ -63,5 +56,3 @@
         source.classList.add('data-source');
         source.innerHTML = "Source: " + aqiData.data.attributions[0].name;
     }
-
-// })

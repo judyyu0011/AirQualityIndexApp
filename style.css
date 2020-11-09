@@ -35,6 +35,7 @@
 
 .city {
     color: white;
+    font-weight: 300;
     padding-top: 25px;;
     padding-bottom: 25px;
     padding-left: 25px;
@@ -42,9 +43,15 @@
 }
 
 .city:hover {
-    background-color: rgb(60, 144, 218);
+    background-color: rgb(139, 189, 232);
     border-radius: 5px;
 }
+
+.city-active {
+    background-color:  rgb(60, 144, 218);
+    border-radius: 5px;
+}
+
 
 #aqi {
     position: absolute;
