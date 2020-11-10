@@ -105,3 +105,12 @@
     font-size: 10px;
     text-align: right;
 }
+
+button {
+    position: absolute;
+    width: 26px;
+    height: 24px;
+    background-color: orange;
+    cursor: pointer;
+    color: white;
+}
