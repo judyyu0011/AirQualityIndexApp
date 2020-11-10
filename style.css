@@ -11,16 +11,12 @@
     border-radius: 15px;
 }
 
-/* .heading {
-    text-align: center;
-} */
 
 .heading {
     position: relative;
     display: block;
     margin: auto;
     padding-top: 30px;
-    /* border: 3px solid #73AD21; */
     text-align: center;
 }
 
@@ -66,10 +62,10 @@
     left: 0;
     margin-top: 15px;
     width: max-content;
-    font-size: 60px;
+    font-size: 55px;
     font-weight: 600;
     background-color: green;
-    padding: 5px;
+    padding: 8px;
     border-radius: 10px;
     color: white;
 }
@@ -99,7 +95,6 @@
 .station {
     position: relative;
     top: -15px;
-    /* background-color: red; */
 }
 
 .data-source {
