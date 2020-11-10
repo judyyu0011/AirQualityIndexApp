@@ -65,15 +65,19 @@
     position: relative;
     left: 0;
     margin-top: 15px;
-    width: 30%;
+    width: max-content;
     font-size: 60px;
     font-weight: 600;
+    background-color: green;
+    padding: 5px;
+    border-radius: 10px;
+    color: white;
 }
 
 .pm25 {
     position: absolute;
     left: 100px;
-    top: 33px;
+    top: 56px;
     text-align: center;
     width: max-content;
     background-color: lightblue;
@@ -84,7 +88,7 @@
 .o3 {
     position: absolute;
     left: 100px;
-    top: 0;
+    top: 20px;
     text-align: center;
     width: max-content;
     background-color: rgb(207, 191, 238);
@@ -99,9 +103,9 @@
 }
 
 .data-source {
-    position: absolute;
+    position: relative;
     right: 0%;
-    top: 170px;
+    top: 15px;
     color: grey;
     font-size: 10px;
     text-align: right;
