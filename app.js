@@ -81,3 +81,11 @@ function displayAQI(aqiData) {
     source.classList.add('data-source');
     source.innerHTML = "Source: " + aqiData.data.attributions[0].name;
 }
+
+function search() {
+    var input = document.getElementById("search-box").value;
+    console.log(input);
+    $.getJSON('https://api.waqi.info/feed/' + input + '/?token=' + token, function(aqiData) {
+        displayAQI(aqiData);
+    });
+}
