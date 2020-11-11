@@ -65,11 +65,20 @@ function displayAQI(aqiData) {
     aqiContainer.appendChild(pm25);
     pm25.classList.add('pm25');
     pm25.innerHTML = "PM2.5" + ": " + aqiData.data.iaqi["pm25"].v;
+    if (aqiData.data.iaqi.hasOwnProperty('pm25')) {
+        pm25.innerHTML = "PM2.5" + ": " + aqiData.data.iaqi["pm25"].v;
+    } else {
+        pm25.innerHTML = "PM2.5: unknown";
+    }
 
     const o3 = document.createElement('p');
     aqiContainer.appendChild(o3);
     o3.classList.add('o3');
-    o3.innerHTML = "O3" + ": " + aqiData.data.iaqi["o3"].v;
+    if (aqiData.data.iaqi.hasOwnProperty('o3')) {
+        o3.innerHTML = "O3" + ": " + aqiData.data.iaqi["o3"].v;
+    } else {
+        o3.innerHTML = "O3: unknown";
+    }
 
     const stationName = document.createElement('p');
     aqiContainer.appendChild(stationName);
@@ -86,6 +95,11 @@ function search() {
     var input = document.getElementById("search-box").value;
     console.log(input);
     $.getJSON('https://api.waqi.info/feed/' + input + '/?token=' + token, function(aqiData) {
-        displayAQI(aqiData);
+        if (aqiData.status == "ok") {
+            displayAQI(aqiData);
+            document.getElementById("search-box").value = '';
+        } else if (aqiData.status == "error") {
+            alert("Unknown station.")
+        }
     });
 }
