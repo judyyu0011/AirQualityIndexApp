@@ -48,11 +48,10 @@
     border-radius: 5px;
 }
 
-
 #aqi {
     position: absolute;
     left: 49%;
-    width: 40%;
+    width: 45%;
     height: 150px;
     top: 100px;
 }
@@ -72,7 +71,7 @@
 
 .pm25 {
     position: absolute;
-    left: 100px;
+    left: 120px;
     top: 56px;
     text-align: center;
     width: max-content;
@@ -83,7 +82,7 @@
 
 .o3 {
     position: absolute;
-    left: 100px;
+    left: 120px;
     top: 20px;
     text-align: center;
     width: max-content;
