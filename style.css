@@ -23,8 +23,8 @@
 .city-container {
     position: absolute;
     left: 10%;
-    width: 30%;
-    top: 100px;
+    width: 25%;
+    top: 130px;
     border-radius: 5px;
     background-color: rgb(27, 75, 133);
 }
@@ -32,9 +32,9 @@
 .city {
     color: white;
     font-weight: 300;
-    padding-top: 25px;;
+    padding-top: 25px;
     padding-bottom: 25px;
-    padding-left: 25px;
+    padding-left: 20px;
     cursor: pointer;
 }
 
@@ -50,10 +50,10 @@
 
 #aqi {
     position: absolute;
-    left: 49%;
+    left: 47%;
     width: 45%;
     height: 150px;
-    top: 100px;
+    top: 120px;
 }
 
 .aqi-value {
@@ -97,10 +97,25 @@
 }
 
 .data-source {
-    position: relative;
+    position: absolute;
     right: 0%;
-    top: 15px;
+    top: 200px;
     color: grey;
     font-size: 10px;
     text-align: right;
+}
+
+#search {
+    right: 36px;
+    top: 90px;
+    position: absolute;
+}
+
+button {
+    position: absolute;
+    width: 28px;
+    height: 24px;
+    background-color: orange;
+    cursor: pointer;
+    color: white;
 }
