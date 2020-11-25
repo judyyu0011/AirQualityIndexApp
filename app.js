@@ -1,22 +1,20 @@
-const token = "53f407f0dab7cf67ad57f71d6c32ad3588cbe32f";
-
 
 function vancouverFn() {
-    $.getJSON('https://api.waqi.info/feed/vancouver/?token=' + token, function(aqiData) {
+    $.getJSON('https://api.waqi.info/feed/vancouver/?token=' + config.aqiApiKey, function(aqiData) {
         displayAQI(aqiData);
         activateColor("vancouver","shanghai","la");
     });
 }
 
 function laFn() {
-    $.getJSON('https://api.waqi.info/feed/los-angeles/?token=' + token, function(aqiData) {
+    $.getJSON('https://api.waqi.info/feed/los-angeles/?token=' + config.aqiApiKey, function(aqiData) {
         displayAQI(aqiData);
         activateColor("la","shanghai","vancouver");
     });
 }
 
 function shanghaiFn() {
-    $.getJSON('https://api.waqi.info/feed/shanghai/?token=' + token, function(aqiData) {
+    $.getJSON('https://api.waqi.info/feed/shanghai/?token=' + config.aqiApiKey, function(aqiData) {
         displayAQI(aqiData);
         activateColor("shanghai","la","vancouver");
     });
