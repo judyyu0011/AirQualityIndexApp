@@ -119,3 +119,9 @@ button {
     cursor: pointer;
     color: white;
 }
+
+#get-location {
+    background: yellowgreen;
+    width: 70px;
+    cursor: pointer;
+}
