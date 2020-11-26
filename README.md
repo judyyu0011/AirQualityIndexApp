@@ -13,4 +13,5 @@ The colour displayed with the AQI value represents a general level of concern an
 See [U.S. Environmental Protection Agency's website](https://www.airnow.gov/aqi/aqi-basics/) for a full explanation of the Air Quality Index. 
 
 ### Credits
-API by [World Air Quality Index](https://waqi.info/)
+AQI API by [World Air Quality Index](https://waqi.info/)
+Reverse geolocating API by [LocationIQ](https://locationiq.com/)
