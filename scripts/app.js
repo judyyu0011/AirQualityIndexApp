@@ -121,6 +121,7 @@ function getCoordinates() {
 
     function error(err) {
         console.warn(`ERROR(${err.code}): ${err.message}`);
+        alert("Unable to access location information.")
     }
       
     navigator.geolocation.getCurrentPosition(success, error, options);
@@ -129,7 +130,7 @@ function getCoordinates() {
 function getCity(coordinates) {
     var lat = coordinates[0];
     var lng = coordinates[1];
-    
+
     $.getJSON('https://api.waqi.info/feed/geo:' + lat + ';' + lng + '/?token=' + config.aqiApiKey, function(aqiData) {
         if (aqiData.status == "ok") {
             displayAQI(aqiData);
