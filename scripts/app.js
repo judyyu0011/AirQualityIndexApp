@@ -129,16 +129,13 @@ function getCoordinates() {
 function getCity(coordinates) {
     var lat = coordinates[0];
     var lng = coordinates[1];
-    $.getJSON('https://us1.locationiq.com/v1/reverse.php?key=' + config.geolocationApiKey + '&format=json&lat=' + lat + '&lon=' + lng, function(response) {
-        currentLoc = response.address.city;
-        console.log(currentLoc);
-        $.getJSON('https://api.waqi.info/feed/' + currentLoc + '/?token=' + config.aqiApiKey, function(aqiData) {
-            if (aqiData.status == "ok") {
-                displayAQI(aqiData);
-                activateColor("cur-loc","la","vancouver","shanghai");
-            } else if (aqiData.status == "error") {
-                alert("Unknown station.")
-            }
-        });
+    
+    $.getJSON('https://api.waqi.info/feed/geo:' + lat + ';' + lng + '/?token=' + config.aqiApiKey, function(aqiData) {
+        if (aqiData.status == "ok") {
+            displayAQI(aqiData);
+            activateColor("cur-loc","la","vancouver","shanghai");
+        } else if (aqiData.status == "error") {
+            alert("Unknown station.")
+        }
     });
 }
