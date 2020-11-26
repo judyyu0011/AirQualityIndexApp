@@ -17,6 +17,7 @@
         <h1 class="heading">Air Quality Index</h1>
 
         <div class="city-container">
+            <div id ="cur-loc" class="city" onclick="getCoordinates()">Current Location</div>
             <div id="vancouver" class="city" onclick="vancouverFn()">Vancouver</div>
             <div id="la" class="city" onclick="laFn()">Los Angeles</div>
             <div id="shanghai" class="city" onclick="shanghaiFn()">Shanghai</div>
@@ -24,7 +25,6 @@
 
         <div id="aqi">
         </div>
-
 
         <div id="search">
             <input type="text" placeholder="Enter city" id="search-box">
