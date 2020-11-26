@@ -24,7 +24,7 @@
     position: absolute;
     left: 10%;
     width: 25%;
-    top: 130px;
+    top: 110px;
     border-radius: 5px;
     background-color: rgb(27, 75, 133);
 }
@@ -32,10 +32,12 @@
 .city {
     color: white;
     font-weight: 300;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    padding-left: 20px;
+    padding-top: 20px;
+    height: 40px;
+    text-align: center;
+    /* padding-left: 20px; */
     cursor: pointer;
+    font-size: 13px;
 }
 
 .city:hover {
@@ -118,10 +120,4 @@ button {
     background-color: orange;
     cursor: pointer;
     color: white;
-}
-
-#get-location {
-    background: yellowgreen;
-    width: 70px;
-    cursor: pointer;
 }
