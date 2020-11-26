@@ -14,4 +14,5 @@ See [U.S. Environmental Protection Agency's website](https://www.airnow.gov/aqi/
 
 ### Credits
 AQI API by [World Air Quality Index](https://waqi.info/)
+
 Reverse geolocating API by [LocationIQ](https://locationiq.com/)
