@@ -2,7 +2,7 @@
 
 This is an air quality index web interface that displays real time air quality information for cities around the world. 
 
-<img src="img/app-screenshot-upd.png" width="600">
+<img src="public/img/app-screenshot-upd.png" width="600">
 
 The search box on the right displays the air quality data for any valid city that you input. If the search box input is not a valid city, a pop-up alert will appear. 
 
