@@ -1,0 +1,25 @@
+{
+  "name": "airqualitypage",
+  "version": "1.0.0",
+  "description": "This is an air quality index web interface that displays real time air quality information for cities around the world.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/judyyu0011/AirQualityApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/judyyu0011/AirQualityApp/issues"
+  },
+  "homepage": "https://github.com/judyyu0011/AirQualityApp#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "got": "^11.8.1"
+  }
+}

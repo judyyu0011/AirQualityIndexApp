@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Air Quality Tracker</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <script src="node_modules/jquery/dist/jquery.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="scripts/config.js"></script>
-    <script src="scripts/app.js" charset="utf-8"> </script>
+    <script src="configc.js"></script>
+    <script src="app.js" charset="utf-8"> </script>
 </head>
 <body>
     <div class="app-container">
@@ -27,11 +27,13 @@
         <div id="aqi">
         </div>
 
-        <div id="search">
-            <input type="text" placeholder="Enter city" id="search-box">
-            <button type="submit" onclick="search()"><i class="fa fa-search"></i></button>
-        </div>
-
+        <!-- <form action="/search" method="POST" id="search-form"> -->
+        <form id="search-form">
+            <div id="search">
+                <input type="text" name="city" placeholder="Enter city" id="search-box">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </form> 
     </div>
 </body>
 </html>
