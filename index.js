@@ -2,7 +2,6 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const got = require('got');
 const app = express();
-const port = 8000;
 
 require('dotenv').config();
 
@@ -36,7 +35,7 @@ app.post('/curr-loc',(req, res)=> {
         try {
             const response = await got('https://api.waqi.info/feed/geo:' + req.body.lat + ';' + req.body.lng + '/?token=' + process.env.API_KEY);
             var aqiData = JSON.parse(response.body);
-            
+
             // send data back
             res.send(aqiData);
         } catch (error) {
@@ -45,6 +44,6 @@ app.post('/curr-loc',(req, res)=> {
     })();
 })
 
-app.listen(port, () => {
-  console.log(`App listening on port ${port}!`)
+app.listen(process.env.PORT, () => {
+  console.log(`App listening on port ${process.env.PORT}!`)
 });
