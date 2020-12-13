@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <script src="node_modules/jquery/dist/jquery.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="config.js"></script>
+    <script src="configc.js"></script>
     <script src="app.js" charset="utf-8"> </script>
 </head>
 <body>
@@ -27,11 +27,17 @@
         <div id="aqi">
         </div>
 
-        <div id="search">
+        <!-- <div id="search">
             <input type="text" placeholder="Enter city" id="search-box">
             <button type="submit" onclick="search()"><i class="fa fa-search"></i></button>
-        </div>
+        </div> -->
 
+        <form action="/search" method="POST" id="search-form">
+            <div id="search">
+                <input type="text" name="city" placeholder="Enter city" id="search-box">
+                <button type="submit" onclick="search()"><i class="fa fa-search"></i></button>
+            </div>
+        </form> 
     </div>
 </body>
 </html>
