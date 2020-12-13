@@ -1,34 +1,4 @@
 
-function vancouverFn() {
-    $.getJSON('https://api.waqi.info/feed/vancouver/?token=' + configc.aqiApiKey, function(aqiData) {
-        displayAQI(aqiData);
-        activateColor("vancouver","shanghai","la","cur-loc");
-    });
-
-    // $.
-}
-
-function laFn() {
-    $.getJSON('https://api.waqi.info/feed/los-angeles/?token=' + configc.aqiApiKey, function(aqiData) {
-        displayAQI(aqiData);
-        activateColor("la","shanghai","vancouver", "cur-loc");
-    });
-}
-
-function shanghaiFn() {
-    $.getJSON('https://api.waqi.info/feed/shanghai/?token=' + configc.aqiApiKey, function(aqiData) {
-        displayAQI(aqiData);
-        activateColor("shanghai","la","vancouver","cur-loc");
-    });
-}
-
-function activateColor(active, notActive1, notActive2, notActive3) {
-    document.getElementById(active).classList.add("city-active");
-    document.getElementById(notActive1).classList.remove("city-active");
-    document.getElementById(notActive2).classList.remove("city-active");
-    document.getElementById(notActive3).classList.remove("city-active");
-}
-
 function displayAQI(aqiData) {
     const aqiContainer = document.getElementById("aqi");
     aqiContainer.innerHTML = " ";
@@ -91,18 +61,54 @@ function displayAQI(aqiData) {
     source.innerHTML = "Source: " + aqiData.data.attributions[0].name;
 }
 
-// function search() {
-//     var input = document.getElementById("search-box").value;
-//     console.log(input);
-//     $.getJSON('https://api.waqi.info/feed/' + input + '/?token=' + configc.aqiApiKey, function(aqiData) {
-//         if (aqiData.status == "ok") {
-//             displayAQI(aqiData);
-//             document.getElementById("search-box").value = '';
-//         } else if (aqiData.status == "error") {
-//             alert("Unknown station.")
-//         }
-//     });
-// }
+function activateColor(active, notActive1, notActive2, notActive3) {
+    document.getElementById(active).classList.add("city-active");
+    document.getElementById(notActive1).classList.remove("city-active");
+    document.getElementById(notActive2).classList.remove("city-active");
+    document.getElementById(notActive3).classList.remove("city-active");
+}
+
+function deactivateColor() {
+    var list = document.getElementsByClassName("city");
+    for (var i = 0; i < list.length; i++) {
+        list[i].classList.remove("city-active");
+    }
+}
+
+function vancouverFn() {
+    var data = { city: 'vancouver' };
+    callApi(data);
+}
+
+function laFn() {
+    var data = { city: 'los-angeles' };
+    callApi(data);
+}
+
+function shanghaiFn() {
+    var data = { city: 'shanghai' };
+    callApi(data);
+}
+
+function callApi(data) {
+    $.ajax({
+        url : '/',
+        type : 'POST',
+        contentType : 'application/json',
+        data : JSON.stringify(data),
+        success: (response)=>{
+            console.log(response);
+            displayAQI(response);
+            if (data.city == "vancouver") {
+                activateColor("vancouver","shanghai","la","cur-loc");
+            } else if (data.city =="shanghai") {
+                activateColor("shanghai","la","vancouver","cur-loc");
+            } else if (data.city == "los-angeles") {
+                activateColor("la","shanghai","vancouver", "cur-loc");
+            }
+        }
+    });
+}
 
 $(document).ready(()=>{
     $('#search-form').submit((e)=> {
@@ -112,10 +118,8 @@ $(document).ready(()=>{
             city: $('#search-box').val()
         };
 
-        console.log(data);
-
         $.ajax({
-            url : '/search',
+            url : '/',
             type : 'POST',
             contentType : 'application/json',
             data : JSON.stringify(data),
@@ -124,6 +128,7 @@ $(document).ready(()=>{
                 if (response.status == "ok") {
                     displayAQI(response);
                     document.getElementById("search-box").value = '';
+                    deactivateColor();
                 } else if (response.status == "error") {
                     alert("Unknown station.")
                 }
@@ -158,15 +163,26 @@ function getCoordinates() {
 }
 
 function getCity(coordinates) {
-    var lat = coordinates[0];
-    var lng = coordinates[1];
+    var data = {
+        lat : coordinates[0],
+        lng : coordinates[1]
+    };
 
-    $.getJSON('https://api.waqi.info/feed/geo:' + lat + ';' + lng + '/?token=' + configc.aqiApiKey, function(aqiData) {
-        if (aqiData.status == "ok") {
-            displayAQI(aqiData);
-            activateColor("cur-loc","la","vancouver","shanghai");
-        } else if (aqiData.status == "error") {
-            alert("Unknown station.")
+    console.log(data);
+
+    $.ajax({
+        url : '/curr-loc',
+        type : 'POST',
+        contentType : 'application/json',
+        data : JSON.stringify(data),
+        success: (response)=>{
+            console.log(response);
+            if (response.status == "ok") {
+                displayAQI(response);
+                activateColor("cur-loc","la","vancouver","shanghai");
+            } else if (response.status == "error") {
+                alert("Unknown station.")
+            }
         }
     });
 }

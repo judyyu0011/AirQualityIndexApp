@@ -14,16 +14,30 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname,'public','index.html'));
 });
 
-// receives call from search form
 // makes api call
-app.post('/search',(req, res)=> {
+// for default cities and search
+app.post('/',(req, res)=> {
     (async () => {
         try {
-            console.log(req);
             const response = await got('https://api.waqi.info/feed/' + req.body.city + '/?token=' + process.env.API_KEY);
-
-            console.log(response.body);
             var aqiData = JSON.parse(response.body);
+
+            // send data back
+            res.send(aqiData);
+        } catch (error) {
+            console.log(error.response.body);
+        }
+    })();
+})
+
+// for current location
+app.post('/curr-loc',(req, res)=> {
+    (async () => {
+        try {
+            const response = await got('https://api.waqi.info/feed/geo:' + req.body.lat + ';' + req.body.lng + '/?token=' + process.env.API_KEY);
+            var aqiData = JSON.parse(response.body);
+            
+            // send data back
             res.send(aqiData);
         } catch (error) {
             console.log(error.response.body);
