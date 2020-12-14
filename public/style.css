@@ -4,8 +4,8 @@
 
 .app-container {
     margin: auto;
-    width: 500px;
-    height: 400px;;
+    width: 550px;
+    height: 400px;
     background-color: whitesmoke;
     position: relative;
     border-radius: 15px;
@@ -127,7 +127,7 @@
 }
 
 #search {
-    right: 36px;
+    left: 60%;
     top: 90px;
     position: absolute;
 }
