@@ -140,3 +140,23 @@ button {
     cursor: pointer;
     color: white;
 }
+
+#info {
+    position: absolute;
+    right: 1%;
+    top: 91%;
+    cursor: pointer;
+}
+
+#back-button {
+    position: absolute;
+    right: 2%;
+    top: 90%;
+    cursor: pointer;
+    width: 35px;
+    border-radius: 5px;
+    background-color:#3498db;
+    padding: 5px;
+    color: white;
+    text-decoration: none;
+}
