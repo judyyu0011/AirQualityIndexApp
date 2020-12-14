@@ -86,6 +86,12 @@ function displayAQI(aqiData) {
     aqiContainer.appendChild(source);
     source.classList.add('data-source');
     source.innerHTML = "Source: " + aqiData.data.attributions[0].name;
+
+    const time = document.createElement('p');
+    aqiContainer.appendChild(time);
+    time.id = 'time';
+    time.innerHTML = "Last Updated: " + aqiData.data.time.s.substring(0,16) + " (local time zone)";
+
 }
 
 // apply color for the selected city
