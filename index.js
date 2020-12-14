@@ -2,7 +2,6 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const got = require('got');
 const app = express();
-
 require('dotenv').config();
 
 app.use(express.static('public'));
@@ -13,7 +12,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname,'public','index.html'));
 });
 
-// makes api call
+// handles post request from frontend, makes api call
 // for default cities and search
 app.post('/',(req, res)=> {
     (async () => {
@@ -29,6 +28,7 @@ app.post('/',(req, res)=> {
     })();
 })
 
+// makes api call
 // for current location
 app.post('/curr-loc',(req, res)=> {
     (async () => {

@@ -3,6 +3,7 @@ function displayAQI(aqiData) {
     const aqiContainer = document.getElementById("aqi");
     aqiContainer.innerHTML = " ";
 
+    // adds aqi value
     const aqiValue = document.createElement('h1');
     aqiContainer.appendChild(aqiValue);
     aqiValue.classList.add('aqi-value');
@@ -10,6 +11,7 @@ function displayAQI(aqiData) {
     aqiValue.innerHTML = aqi;
     var aqiColor;
     
+    // assigns background color based on aqi value
     switch (true) {
         case (aqi <= 50):
             aqiValue.style.backgroundColor = "#009966";
@@ -31,36 +33,63 @@ function displayAQI(aqiData) {
             break;
     }       
 
-    const pm25 = document.createElement('p');
-    aqiContainer.appendChild(pm25);
-    pm25.classList.add('pm25');
-    pm25.innerHTML = "PM2.5" + ": " + aqiData.data.iaqi["pm25"].v;
-    if (aqiData.data.iaqi.hasOwnProperty('pm25')) {
-        pm25.innerHTML = "PM2.5" + ": " + aqiData.data.iaqi["pm25"].v;
-    } else {
-        pm25.innerHTML = "PM2.5: unknown";
-    }
-
-    const o3 = document.createElement('p');
-    aqiContainer.appendChild(o3);
-    o3.classList.add('o3');
-    if (aqiData.data.iaqi.hasOwnProperty('o3')) {
-        o3.innerHTML = "O3" + ": " + aqiData.data.iaqi["o3"].v;
-    } else {
-        o3.innerHTML = "O3: unknown";
-    }
-
+    // displays station name
     const stationName = document.createElement('p');
     aqiContainer.appendChild(stationName);
     stationName.classList.add('station');
     stationName.innerHTML = aqiData.data.city.name;
 
+    // adds pollutant container
+    const polContainer = document.createElement('div');
+    aqiContainer.appendChild(polContainer);
+    polContainer.id = 'pollutant';
+
+    // displays pollutant heading
+    const polHeading = document.createElement('p');
+    polContainer.appendChild(polHeading);
+    polHeading.id = 'pollutant-heading';
+    polHeading.innerHTML = "Dominant Pollutant";
+
+    // container for dominant pollutant
+    const domPolContainer = document.createElement('div');
+    polContainer.appendChild(domPolContainer);
+    domPolContainer.id = 'dom-pol-container';
+
+    // gets the dominant pollutant, display it
+    var dominantPollutant = aqiData.data.dominentpol;
+    console.log(dominantPollutant);
+    const domPol = document.createElement('p');
+    domPolContainer.appendChild(domPol);
+    domPol.id = 'dom-pol';
+    var domPolName;
+    if (dominantPollutant == 'co') {
+        domPolName = 'Carbon Monoxide';
+    } else if (dominantPollutant == 'h') {
+        domPolName = 'Hydrogen';
+    } else if (dominantPollutant == 'no2') {
+        domPolName = 'Nitrogen Dioxide';
+    } else if (dominantPollutant == 'o3') {
+        domPolName = 'Ozone';
+    } else if (dominantPollutant == 'pm10') {
+        domPolName = 'PM' + '10'.sub();
+    } else if (dominantPollutant == 'pm25') {
+        domPolName = 'PM' + '2.5'.sub();
+    } else if (dominantPollutant == 'so2') {
+        domPolName = 'Sulfur Dioxide';
+    } else {
+        domPolName = dominantPollutant;
+    }
+    domPol.innerHTML = domPolName + ": "+ aqiData.data.iaqi[dominantPollutant].v;
+
+    // displays the data source
     const source = document.createElement('p');
     aqiContainer.appendChild(source);
     source.classList.add('data-source');
     source.innerHTML = "Source: " + aqiData.data.attributions[0].name;
 }
 
+// apply color for the selected city
+// remove colors for cities not selected
 function activateColor(active, notActive1, notActive2, notActive3) {
     document.getElementById(active).classList.add("city-active");
     document.getElementById(notActive1).classList.remove("city-active");
@@ -68,6 +97,7 @@ function activateColor(active, notActive1, notActive2, notActive3) {
     document.getElementById(notActive3).classList.remove("city-active");
 }
 
+// remove colors for all cities
 function deactivateColor() {
     var list = document.getElementsByClassName("city");
     for (var i = 0; i < list.length; i++) {
@@ -75,21 +105,27 @@ function deactivateColor() {
     }
 }
 
+// api call for default city1
 function vancouverFn() {
     var data = { city: 'vancouver' };
     callApi(data);
 }
 
+// api call for default city2
 function laFn() {
     var data = { city: 'los-angeles' };
     callApi(data);
 }
 
+// api call for default city3
 function shanghaiFn() {
     var data = { city: 'shanghai' };
     callApi(data);
 }
 
+// send city name to server 
+// handles response (json from api call) from server
+// for default cities
 function callApi(data) {
     $.ajax({
         url : '/',
@@ -110,6 +146,9 @@ function callApi(data) {
     });
 }
 
+// send city name inputted by user to server
+// handles response (json from api call) from server
+// for search function
 $(document).ready(()=>{
     $('#search-form').submit((e)=> {
         e.preventDefault();
@@ -137,6 +176,8 @@ $(document).ready(()=>{
     }); 
 });
 
+// get user's current location coordinate
+// uses built in geolocation
 function getCoordinates() {
     var options = { 
         enableHighAccuracy: true, 
@@ -150,7 +191,7 @@ function getCoordinates() {
         var lng = crd.longitude.toString(); 
         var coordinates = [lat, lng]; 
         console.log(`Latitude: ${lat}, Longitude: ${lng}`); 
-        getCity(coordinates); 
+        displayDataForCurrLoc(coordinates); 
         return; 
     } 
 
@@ -162,7 +203,9 @@ function getCoordinates() {
     navigator.geolocation.getCurrentPosition(success, error, options);
 }
 
-function getCity(coordinates) {
+// sends user's coordiantes to server
+// handles response from server
+function displayDataForCurrLoc(coordinates) {
     var data = {
         lat : coordinates[0],
         lng : coordinates[1]
