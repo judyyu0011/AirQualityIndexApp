@@ -1,5 +1,7 @@
 # Air Quality Index App
 
+Access the app [here](https://air-quality-tracker-judyyu.herokuapp.com/) 
+
 This is an air quality index web interface that displays real time air quality information for cities around the world. 
 
 <img src="public/img/app-screenshot.png" width="600">
