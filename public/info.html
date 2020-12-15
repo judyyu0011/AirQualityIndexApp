@@ -6,6 +6,8 @@
     <title>Air Quality Tracker</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="configc.js"></script>
@@ -14,8 +16,39 @@
 <body>
 
     <div class="app-container">
-        <h1 class="heading">Air Quality Tracker</h1>
+        <h1 class="heading">AQI Definition</h1>
 
-        <a href="/" id="back-button">back</a>
+        <div id="info-table">
+            <div class="row">
+                <div class="column column-left good-row" id="good">Good</div>
+                <div class="column column-right">Air quality is satisfactory, and air pollution poses little or no risk.</div>
+            </div>
+            <div class="row">
+                <div class="column column-left" id="moderate">Moderate</div>
+                <div class="column column-right">Air quality is acceptable. However, there may be a risk for some people, particularly those who are unusually sensitive to air pollution.</div>
+            </div>
+            <div class="row">
+                <div class="column column-left" id="unhealthy-for-sensitive">Unhealthy for Sensitive Groups</div>
+                <div class="column column-right">Members of sensitive groups may experience health effects. The general public is less likely to be affected.</div>
+            </div>
+            <div class="row">
+                <div class="column column-left" id="unhealthy">Unhealthy</div>
+                <div class="column column-right">Some members of the general public may experience health effects; members of sensitive groups may experience more serious health effects.</div>
+            </div>
+            <div class="row">
+                <div class="column column-left" id="very-unhealthy">Very Unhealthy</div>
+                <div class="column column-right">Health alert: The risk of health effects is increased for everyone.</div>
+            </div>
+            <div class="row">
+                <div class="column column-left" id="hazardous">Hazardous</div>
+                <div class="column column-right">Health warning of emergency conditions: everyone is more likely to be affected.</div>
+            </div>
+        </div>  
+        
+        <div class="more-info">For more information, visit
+            <a href="https://www.airnow.gov/aqi/aqi-basics/">www.airnow.gov</a>
+             by U.S. EPA</div>
+
+        <a href="/" id="back-button">&lt;</a>
 
 </body>
