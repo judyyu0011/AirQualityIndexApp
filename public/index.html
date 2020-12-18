@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="configc.js"></script>
     <script src="app.js" charset="utf-8"> </script>
@@ -25,17 +28,19 @@
         </form> 
 
         <div class="city-container">
-            <div id ="cur-loc" class="city" onclick="getCoordinates()">Current Location</div>
+            <div id ="cur-loc" class="city" onclick="getCoordinates()">
+                <div class="city-name">Current Location</div>
+            </div>
             <div id="vancouver" class="city" onclick="vancouverFn()">Vancouver</div>
             <div id="la" class="city" onclick="laFn()">Los Angeles</div>
             <div id="shanghai" class="city" onclick="shanghaiFn()">Shanghai</div>
         </div>
 
-        <div id="aqi">
+        <div id="aqi-container">
         </div>
 
         <a href="info.html">
-            <img src="img/info-symbol.png" id="info" alt="information" width="30">
+            <img src="img/info-symbol.png" id="info" alt="information">
         </a>
     
 
