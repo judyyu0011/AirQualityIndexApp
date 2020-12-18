@@ -1,6 +1,6 @@
 
 function displayAQI(aqiData) {
-    const aqiContainer = document.getElementById("aqi");
+    const aqiContainer = document.getElementById("aqi-container");
     aqiContainer.innerHTML = " ";
 
     // adds aqi value
